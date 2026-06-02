@@ -129,7 +129,7 @@ export default function WhoIAm() {
             I'm someone who <em>builds.</em>
           </Headline>
           <Body>
-            My name is Eseosa Owen Omo-Enabu, alias Owen. For the last few years
+            My name is Owen. For the last few years
             I've been quietly building digital things for businesses —
             restaurants, pharmacies, real estate companies, personal brands that
             started with nothing and needed everything. Websites, brand
