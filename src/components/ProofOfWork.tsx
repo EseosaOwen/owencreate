@@ -1,19 +1,8 @@
-import { useState, useEffect, useCallback } from "react";
+import { useRef, useEffect, useCallback } from "react";
 import styled from "@emotion/styled";
-import { keyframes } from "@emotion/react";
+import GLightbox from "glightbox";
+import "glightbox/dist/css/glightbox.min.css";
 import { tokens, fonts } from "../tokens";
-
-// ─── Keyframes ────────────────────────────────────────────────────────────────
-
-const fadeIn = keyframes`
-  from { opacity: 0; }
-  to   { opacity: 1; }
-`;
-
-const imgFade = keyframes`
-  from { opacity: 0; }
-  to   { opacity: 1; }
-`;
 
 // ─── Section layout ───────────────────────────────────────────────────────────
 
@@ -188,286 +177,6 @@ const FooterNote = styled.p`
   margin-top: 24px;
 `;
 
-// ─── Lightbox ─────────────────────────────────────────────────────────────────
-
-const LightboxOverlay = styled.div`
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  background: rgba(0, 0, 0, 0.88);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  animation: ${fadeIn} 0.2s ease;
-`;
-
-const LightboxContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 18px;
-  max-width: calc(100vw - 120px);
-  max-height: calc(100vh - 80px);
-  overflow: hidden;
-
-  @media (max-width: 600px) {
-    max-width: calc(100vw - 32px);
-    max-height: calc(100vh - 80px);
-  }
-`;
-
-const LightboxImg = styled.img`
-  max-width: min(820px, calc(100vw - 120px));
-  max-height: calc(100vh - 160px);
-  object-fit: contain;
-  display: block;
-  border-radius: 4px;
-  animation: ${imgFade} 0.15s ease;
-
-  @media (max-width: 600px) {
-    max-width: calc(100vw - 32px);
-    max-height: calc(100vh - 160px);
-  }
-`;
-
-const LightboxPlaceholder = styled.div`
-  width: min(820px, calc(100vw - 120px));
-  height: min(500px, calc(100vh - 200px));
-  background: rgba(145, 94, 255, 0.05);
-  border: 0.5px solid rgba(145, 94, 255, 0.12);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: ${imgFade} 0.15s ease;
-
-  @media (max-width: 600px) {
-    width: calc(100vw - 32px);
-    height: min(300px, calc(100vh - 200px));
-  }
-`;
-
-const PlaceholderLabel = styled.div`
-  font-family: ${fonts.display};
-  font-size: 14px;
-  font-style: italic;
-  color: rgba(145, 94, 255, 0.3);
-`;
-
-const arrowStyle = `
-  position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 26px;
-  color: rgba(255, 255, 255, 0.35);
-  background: none;
-  padding: 16px 20px;
-  line-height: 1;
-  transition: color 0.15s ease;
-  z-index: 1001;
-  font-family: ${fonts.body};
-
-  &:hover {
-    color: white;
-  }
-`;
-
-const ArrowLeft = styled.button`
-  ${arrowStyle}
-  left: 8px;
-
-  @media (max-width: 600px) {
-    display: none;
-  }
-`;
-
-const ArrowRight = styled.button`
-  ${arrowStyle}
-  right: 8px;
-
-  @media (max-width: 600px) {
-    display: none;
-  }
-`;
-
-const CloseBtn = styled.button`
-  position: fixed;
-  top: 16px;
-  right: 20px;
-  font-size: 22px;
-  line-height: 1;
-  color: rgba(255, 255, 255, 0.35);
-  background: none;
-  padding: 8px 10px;
-  transition: color 0.15s ease;
-  z-index: 1001;
-  font-family: ${fonts.body};
-
-  &:hover {
-    color: white;
-  }
-
-  @media (max-width: 600px) {
-    top: 12px;
-    right: 12px;
-  }
-`;
-
-const MobileArrowRow = styled.div`
-  display: none;
-
-  @media (max-width: 600px) {
-    display: flex;
-    gap: 32px;
-    justify-content: center;
-    align-items: center;
-  }
-`;
-
-const MobileArrowBtn = styled.button`
-  font-size: 22px;
-  color: rgba(255, 255, 255, 0.35);
-  background: none;
-  padding: 8px 16px;
-  line-height: 1;
-  transition: color 0.15s ease;
-  font-family: ${fonts.body};
-
-  &:hover {
-    color: white;
-  }
-`;
-
-function ImageOrFallback({ src, index, imgKey }: { src: string; index: number; imgKey: number }) {
-  const [failed, setFailed] = useState(false);
-
-  if (failed) {
-    return (
-      <LightboxPlaceholder key={imgKey}>
-        <PlaceholderLabel>Image {index + 1} — coming soon</PlaceholderLabel>
-      </LightboxPlaceholder>
-    );
-  }
-
-  return (
-    <LightboxImg
-      key={imgKey}
-      src={`/images/work/${src}`}
-      alt={`Brand identity — image ${index + 1}`}
-      onError={() => setFailed(true)}
-    />
-  );
-}
-
-function Lightbox({ images, onClose }: { images: string[]; onClose: () => void }) {
-  const [index, setIndex] = useState(0);
-  const [imgKey, setImgKey] = useState(0);
-
-  const navigate = useCallback(
-    (dir: number) => {
-      setIndex((i) => (i + dir + images.length) % images.length);
-      setImgKey((k) => k + 1);
-    },
-    [images.length]
-  );
-
-  useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
-      if (e.key === "ArrowLeft") navigate(-1);
-      else if (e.key === "ArrowRight") navigate(1);
-      else if (e.key === "Escape") onClose();
-    };
-    window.addEventListener("keydown", handler);
-    return () => window.removeEventListener("keydown", handler);
-  }, [navigate, onClose]);
-
-  useEffect(() => {
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = prev;
-    };
-  }, []);
-
-  return (
-    <LightboxOverlay onClick={onClose}>
-      <LightboxContent onClick={(e) => e.stopPropagation()}>
-        <ImageOrFallback key={imgKey} src={images[index]} index={index} imgKey={imgKey} />
-
-        {images.length > 1 && (
-          <div style={{ display: "flex", gap: 6 }}>
-            {images.map((_, i) => (
-              <div
-                key={i}
-                onClick={() => {
-                  setIndex(i);
-                  setImgKey((k) => k + 1);
-                }}
-                style={{
-                  width: 5,
-                  height: 5,
-                  borderRadius: "50%",
-                  background: i === index ? "white" : "rgba(255,255,255,0.22)",
-                  transition: "background 0.15s ease",
-                  cursor: "pointer",
-                  flexShrink: 0,
-                }}
-              />
-            ))}
-          </div>
-        )}
-
-        {images.length > 1 && (
-          <MobileArrowRow>
-            <MobileArrowBtn
-              onClick={(e) => { e.stopPropagation(); navigate(-1); }}
-              aria-label="Previous image"
-            >
-              ←
-            </MobileArrowBtn>
-            <MobileArrowBtn
-              onClick={(e) => { e.stopPropagation(); navigate(1); }}
-              aria-label="Next image"
-            >
-              →
-            </MobileArrowBtn>
-          </MobileArrowRow>
-        )}
-      </LightboxContent>
-
-      <CloseBtn onClick={onClose} aria-label="Close lightbox">
-        ×
-      </CloseBtn>
-
-      {images.length > 1 && (
-        <>
-          <ArrowLeft
-            onClick={(e) => {
-              e.stopPropagation();
-              navigate(-1);
-            }}
-            aria-label="Previous image"
-          >
-            ←
-          </ArrowLeft>
-          <ArrowRight
-            onClick={(e) => {
-              e.stopPropagation();
-              navigate(1);
-            }}
-            aria-label="Next image"
-          >
-            →
-          </ArrowRight>
-        </>
-      )}
-    </LightboxOverlay>
-  );
-}
-
 // ─── Project data ─────────────────────────────────────────────────────────────
 
 type Project = {
@@ -509,7 +218,7 @@ const projects: Project[] = [
   {
     team: "1Ephraim",
     title: "Brand identity",
-    desc: "Logo, type, colour — built from nothing.",
+    desc: "PuissantDev brand logo, type, colour — built from nothing.",
     gallery: [
       "puissantdev/mockup-banner.jpg",
       "puissantdev/mockup-billboard.jpg",
@@ -529,14 +238,33 @@ const projects: Project[] = [
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export default function ProofOfWork() {
-  const [lightboxImages, setLightboxImages] = useState<string[] | null>(null);
+  const lbRef = useRef<ReturnType<typeof GLightbox> | null>(null);
 
-  const openGallery = useCallback((images: string[]) => {
-    setLightboxImages(images);
+  useEffect(() => {
+    return () => {
+      lbRef.current?.destroy();
+    };
   }, []);
 
-  const closeGallery = useCallback(() => {
-    setLightboxImages(null);
+  const openGallery = useCallback((images: string[]) => {
+    lbRef.current?.destroy();
+    lbRef.current = GLightbox({
+      // GLightbox types incorrectly declare elements as [] (empty tuple)
+      elements: images.map((src, i) => ({
+        href: `/images/work/${src}`,
+        type: "image",
+        alt: `Brand identity — image ${i + 1}`,
+      })) as unknown as [],
+      touchNavigation: true,
+      keyboardNavigation: true,
+      closeButton: true,
+      openEffect: "fade",
+      closeEffect: "fade",
+      slideEffect: "fade",
+      zoomable: false,
+      draggable: false,
+    });
+    lbRef.current.open();
   }, []);
 
   return (
@@ -570,7 +298,7 @@ export default function ProofOfWork() {
                       <img src={`/images/work/${p.image}`} alt={p.title} />
                     )}
                     {hasGallery ? (
-                      <GalleryBadge>View work →</GalleryBadge>
+                      <GalleryBadge>View images →</GalleryBadge>
                     ) : (
                       <CardImageIcon>{p.placeholder ? "+" : "↗"}</CardImageIcon>
                     )}
@@ -590,10 +318,6 @@ export default function ProofOfWork() {
           Every build in the 15 Builds Series lives here. Updated every Friday.
         </FooterNote>
       </Inner>
-
-      {lightboxImages && (
-        <Lightbox images={lightboxImages} onClose={closeGallery} />
-      )}
     </Section>
   );
 }
