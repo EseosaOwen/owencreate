@@ -108,6 +108,11 @@ const PhotoWrapper = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
+  position: relative;
+
+  img {
+    width: 100%;
+  }
 `;
 
 const PhotoPlaceholder = styled.div`
@@ -115,6 +120,11 @@ const PhotoPlaceholder = styled.div`
   font-size: 48px;
   font-weight: 400;
   color: ${tokens.purple};
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
 `;
 
 export default function WhoIAm() {
@@ -129,11 +139,11 @@ export default function WhoIAm() {
             I'm someone who <em>builds.</em>
           </Headline>
           <Body>
-            My name is Owen. For the last few years
-            I've been quietly building digital things for businesses —
-            restaurants, pharmacies, real estate companies, personal brands that
-            started with nothing and needed everything. Websites, brand
-            identities, digital systems. Work that actually moves the needle.
+            My name is Owen. For the last few years I've been quietly building
+            digital things for businesses — restaurants, pharmacies, real estate
+            companies, personal brands that started with nothing and needed
+            everything. Websites, brand identities, digital systems. Work that
+            actually moves the needle.
             <br />
             <br />
             I run two teams. PuissantDev handles custom builds — the technical,
@@ -179,6 +189,7 @@ export default function WhoIAm() {
 
         <Right>
           <PhotoWrapper>
+            <img src="/images/me.PNG" />
             <PhotoPlaceholder>O</PhotoPlaceholder>
           </PhotoWrapper>
         </Right>

@@ -1,5 +1,5 @@
-import styled from '@emotion/styled';
-import { tokens, fonts } from '../tokens';
+import styled from "@emotion/styled";
+import { tokens, fonts } from "../tokens";
 
 const Section = styled.section`
   background: ${tokens.base};
@@ -65,7 +65,7 @@ const Card = styled.div`
 
 const VideoThumb = styled.div`
   border-radius: 10px;
-  background: #E8E4FF;
+  background: #e8e4ff;
   height: 100px;
   margin-bottom: 16px;
   display: flex;
@@ -81,7 +81,7 @@ const VideoLabel = styled.span`
 
 const AvatarRow = styled.div`
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   gap: 10px;
   margin-bottom: 14px;
 `;
@@ -113,6 +113,13 @@ const AvatarBiz = styled.div`
   font-family: ${fonts.body};
   font-size: 11px;
   color: ${tokens.textSecondary};
+`;
+
+const AvatarQuote = styled.p`
+  font-family: ${fonts.display};
+  font-size: 14px;
+  font-style: italic;
+  margin-top: 0.5rem;
 `;
 
 const PlaceholderCard = styled(Card)`
@@ -148,6 +155,25 @@ const ClosingLine = styled.p`
   line-height: 1.6;
 `;
 
+const testimonials = [
+  {
+    avatar: "TK",
+    name: "Tinuade Kolawole",
+    location: "Remote",
+    business: "Event Planning",
+    highlight:
+      "Owen and the team has been an incredible asset to my business. The website and branding they developed not only elevated my event planning agency but also helped me reach a broader audience and drive more engagement. I'm truly grateful for their outstanding service. Thank you!",
+  },
+  {
+    avatar: "CN",
+    name: "Centerfield Engineering",
+    location: "Nigeria",
+    business: "Construction and Engineering",
+    highlight:
+      "PuissantDev did an excellent job bringing our vision to life. They created a modern, professional website that clearly showcases our engineering services and project portfolio. The team was responsive, easy to work with, and delivered exactly what we needed.",
+  },
+];
+
 export default function Testimonials() {
   return (
     <Section id="testimonials">
@@ -166,6 +192,24 @@ export default function Testimonials() {
             </PlaceholderText>
           </PlaceholderCard>
 
+          {testimonials.map((card) => (
+            <Card>
+              <VideoThumb>
+                <VideoLabel>{card.avatar}</VideoLabel>
+              </VideoThumb>
+              <AvatarRow>
+                <Avatar>{card.avatar}</Avatar>
+                <AvatarInfo>
+                  <AvatarName>{card.name}</AvatarName>
+                  <AvatarBiz>
+                    {card.business} · {card.location}
+                  </AvatarBiz>
+                  <AvatarQuote>"{card.highlight}"</AvatarQuote>
+                </AvatarInfo>
+              </AvatarRow>
+            </Card>
+          ))}
+
           <Card>
             <VideoThumb>
               <VideoLabel>Coming soon</VideoLabel>
@@ -181,7 +225,8 @@ export default function Testimonials() {
         </Grid>
 
         <ClosingLine>
-          Every business we work with gets this level of attention. Yours will too.
+          Every business we work with gets this level of attention. Yours will
+          too.
         </ClosingLine>
       </Inner>
     </Section>
