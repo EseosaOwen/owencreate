@@ -3,7 +3,7 @@ import Nav from './components/Nav';
 import Hero from './components/Hero';
 import Problem from './components/Problem';
 import WhoIAm from './components/WhoIAm';
-import Offer from './components/Offer';
+// import Offer from './components/Offer';
 import ProofOfWork from './components/ProofOfWork';
 import Series from './components/Series';
 import Testimonials from './components/Testimonials';
@@ -47,8 +47,8 @@ export default function App() {
         <FadeSection><Hero /></FadeSection>
         <FadeSection><Problem /></FadeSection>
         <FadeSection><WhoIAm /></FadeSection>
-        <FadeSection><Offer /></FadeSection>
         <FadeSection><ProofOfWork /></FadeSection>
+        {/* <FadeSection><Offer /></FadeSection> */}
         <FadeSection><Series /></FadeSection>
         <FadeSection><Testimonials /></FadeSection>
         <FadeSection><Contact /></FadeSection>

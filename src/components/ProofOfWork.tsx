@@ -86,12 +86,15 @@ const Grid = styled.div`
 `;
 
 const Card = styled.div<{ placeholder?: boolean }>`
-  background: ${({ placeholder }) => (placeholder ? tokens.purpleTint : "white")};
+  background: ${({ placeholder }) =>
+    placeholder ? tokens.purpleTint : "white"};
   border-radius: 12px;
   overflow: hidden;
   border: 0.5px solid ${tokens.border};
   cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
 
   &:hover {
     transform: translateY(-2px);
@@ -169,13 +172,162 @@ const CardDesc = styled.div`
   color: ${tokens.textSecondary};
 `;
 
-const FooterNote = styled.p`
-  text-align: center;
-  font-family: ${fonts.body};
-  font-size: 12px;
-  color: ${tokens.textSecondary};
-  margin-top: 24px;
+// ─── Skills styled components ─────────────────────────────────────────────────
+
+const SkillsBlock = styled.div`
+  margin-bottom: 80px;
 `;
+
+const SkillsHeader = styled.div`
+  margin-bottom: 32px;
+`;
+
+const SkillsEyebrow = styled.div`
+  font-family: ${fonts.body};
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: ${tokens.purple};
+  margin-bottom: 12px;
+`;
+
+const SkillsHeadline = styled.h2`
+  font-family: ${fonts.display};
+  font-size: clamp(28px, 4vw, 38px);
+  font-weight: 400;
+  color: ${tokens.textPrimary};
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+`;
+
+const SkillsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+
+  @media (max-width: 700px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const SkillCard = styled.div`
+  background: ${tokens.dark};
+  border-radius: 14px;
+  padding: 24px;
+`;
+
+const CatLabel = styled.div`
+  font-family: ${fonts.body};
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: ${tokens.purple};
+  margin-bottom: 14px;
+`;
+
+const PillRow = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+`;
+
+const SkillPill = styled.span`
+  font-family: ${fonts.body};
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 100px;
+  padding: 4px 10px;
+`;
+
+const SectionDivider = styled.div`
+  border-top: 0.5px solid ${tokens.border};
+  margin-bottom: 56px;
+`;
+
+const StackRow = styled.div`
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+  margin-top: 10px;
+`;
+
+const StackLabel = styled.span`
+  font-family: ${fonts.body};
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: ${tokens.textSecondary};
+  margin-right: 4px;
+`;
+
+const StackPill = styled.span`
+  font-family: ${fonts.body};
+  font-size: 11px;
+  color: ${tokens.textPrimary};
+  background: ${tokens.purpleTint};
+  border-radius: 100px;
+  padding: 3px 10px;
+`;
+
+// ─── Skills data ──────────────────────────────────────────────────────────────
+
+const skillCategories = [
+  {
+    label: "Frontend",
+    skills: [
+      "React",
+      "TypeScript",
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "Tailwind",
+      "CSS-in-JS (Emotion/Styled Components)",
+      "Redux",
+      "React Query",
+    ],
+  },
+  {
+    label: "Backend",
+    skills: [
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "REST APIs",
+      "External API integrations",
+      "Payment systems & integrations",
+      "Authentication & security",
+    ],
+  },
+  {
+    label: "Architecture & systems",
+    skills: [
+      "Full-stack & systems architecture",
+      "State management",
+      "Backend data modelling",
+      "API design",
+      "Git & version control",
+    ],
+  },
+  {
+    label: "Familiar with",
+    skills: ["AWS (cloud infrastructure — currently refreshing)"],
+  },
+  {
+    label: "Others",
+    skills: [
+      "Sales",
+      "Team Leadership",
+      "Product Marketing",
+      "Critical Thinking",
+    ],
+  },
+];
 
 // ─── Project data ─────────────────────────────────────────────────────────────
 
@@ -187,52 +339,87 @@ type Project = {
   url?: string;
   gallery?: string[];
   placeholder?: boolean;
+  stack: string[];
+  type?: string;
 };
 
 const projects: Project[] = [
   {
-    team: "PuissantDev",
+    team: "Personal project",
+    title: "Involey",
+    type: "SaaS",
+    desc: "I identified a gap in how small businesses track visibility and clarity. And I've built the tool to fix it.",
+    image: "PuwiHealth Iphone mockup.jpg",
+    stack: [
+      "React",
+      "TypeScript",
+      "Node.js",
+      "MongoDB",
+      "Express",
+      "Payment Integration",
+      "Redux and TanStack Query",
+      "Email Architecture",
+    ],
+    url: "https://involey.puissantdev.tech",
+  },
+  {
+    team: "",
     title: "Restaurant digital system",
-    desc: "Full digital infrastructure from zero.",
+    desc: "Built a custom digital infrastructure for a restaurant — ordering system, customer retention tools, tailored specifically to the hospitality niche.",
     image: "Chester Fries Restaurant.png",
+    stack: [
+      "React",
+      "TypeScript",
+      "Node.js",
+      "MongoDB",
+      "Express",
+      "Messaging (SMS/Email) Integration",
+      "Full Admin Dashboard",
+      "Payment Integration",
+    ],
+  },
+  {
+    team: "",
+    title: "Pharmacy e-commerce store",
+    image: "Khapsule Pharmacy Mockup.jpg",
+    desc: "Built a full e-commerce system for a pharmacy from the ground up — product catalogue, checkout flow, order management, payment integration.",
+    url: "https://khapsulepharmacy.org",
+    stack: [
+      "React",
+      "Node.js",
+      "MongoDB",
+      "Payment Integration",
+      "Full Admin Dashboard",
+    ],
+    type: "E-commerce",
   },
   {
     team: "PuissantDev",
-    title: "Pharmacy e-commerce store",
-    image: "Khapsule Pharmacy Mockup.jpg",
-    desc: "Custom store, checkout, order management.",
-    url: "https://khapsulepharmacy.org",
+    title: "Construction and Engineering business website",
+    type: "Web",
+    desc: "Professional web presence built to convert for a construction and engineering company.",
+    stack: ["React", "CSS-in-JS"],
+    url: "https://centerfieldengineering.com"
   },
   {
     team: "PuissantDev",
     title: "Naturopathy center website",
-    desc: "Built to communicate trust and expertise.",
+    desc: "Built a website for Puwi Health to communicate trust and expertise to a health-conscious audience.",
+    image: "PuwiHealth Iphone mockup.jpg",
+    stack: ["React", "CSS-in-JS"],
   },
-  {
-    team: "1Ephraim",
-    title: "SaaS landing page",
-    desc: "Professional web presence built to convert.",
-    image: "pigby.jpg",
-    url: "https://pigby.io",
-  },
-  {
-    team: "1Ephraim",
-    title: "Brand identity",
-    desc: "PuissantDev brand logo, type, colour — built from nothing.",
-    gallery: [
-      "puissantdev/mockup-banner.jpg",
-      "puissantdev/mockup-billboard.jpg",
-      "puissantdev/mockup-brochure.jpg",
-      "puissantdev/logo.jpg",
-      "puissantdev/logo-mockup.jpg",
-    ],
-  },
-  {
-    team: "15 Builds",
-    title: "15 Builds Series — in progress",
-    desc: "New work added every Friday.",
-    placeholder: true,
-  },
+  // {
+  //   team: "1Ephraim",
+  //   title: "Brand identity",
+  //   desc: "PuissantDev brand logo, type, colour — built from nothing.",
+  //   gallery: [
+  //     "puissantdev/mockup-banner.jpg",
+  //     "puissantdev/mockup-billboard.jpg",
+  //     "puissantdev/mockup-brochure.jpg",
+  //     "puissantdev/logo.jpg",
+  //     "puissantdev/logo-mockup.jpg",
+  //   ],
+  // },
 ];
 
 // ─── Component ────────────────────────────────────────────────────────────────
@@ -270,6 +457,27 @@ export default function ProofOfWork() {
   return (
     <Section id="proof">
       <Inner>
+        <SkillsBlock>
+          <SkillsHeader>
+            <SkillsEyebrow>Skills &amp; Stack</SkillsEyebrow>
+            <SkillsHeadline>What I build with.</SkillsHeadline>
+          </SkillsHeader>
+          <SkillsGrid>
+            {skillCategories.map((cat) => (
+              <SkillCard key={cat.label}>
+                <CatLabel>{cat.label}</CatLabel>
+                <PillRow>
+                  {cat.skills.map((s) => (
+                    <SkillPill key={s}>{s}</SkillPill>
+                  ))}
+                </PillRow>
+              </SkillCard>
+            ))}
+          </SkillsGrid>
+        </SkillsBlock>
+
+        <SectionDivider />
+
         <HeaderRow>
           <HeaderLeft>
             <Eyebrow>Proof of work</Eyebrow>
@@ -277,7 +485,7 @@ export default function ProofOfWork() {
               The work speaks for <em>itself.</em>
             </Headline>
           </HeaderLeft>
-          <HeaderNote>A few things we've built. Updated every Friday.</HeaderNote>
+          <HeaderNote>A few things I've built</HeaderNote>
         </HeaderRow>
 
         <Grid>
@@ -304,19 +512,23 @@ export default function ProofOfWork() {
                     )}
                   </CardImage>
                   <CardBody>
-                    <CardEyebrow>{p.team}</CardEyebrow>
+                    <CardEyebrow>{p.type}</CardEyebrow>
                     <CardTitle>{p.title}</CardTitle>
                     <CardDesc>{p.desc}</CardDesc>
+                    {p.stack.length > 0 && (
+                      <StackRow>
+                        <StackLabel>Stack</StackLabel>
+                        {p.stack.map((s) => (
+                          <StackPill key={s}>{s}</StackPill>
+                        ))}
+                      </StackRow>
+                    )}
                   </CardBody>
                 </Card>
               </div>
             );
           })}
         </Grid>
-
-        <FooterNote>
-          Every build in the 15 Builds Series lives here. Updated every Friday.
-        </FooterNote>
       </Inner>
     </Section>
   );

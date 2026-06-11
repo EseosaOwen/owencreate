@@ -128,6 +128,10 @@ const PhotoPlaceholder = styled.div`
 `;
 
 export default function WhoIAm() {
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <Section>
       <Inner>
@@ -139,50 +143,39 @@ export default function WhoIAm() {
             I'm someone who <em>builds.</em>
           </Headline>
           <Body>
-            My name is Owen. For the last few years I've been quietly building
-            digital things for businesses — restaurants, pharmacies, real estate
-            companies, personal brands that started with nothing and needed
-            everything. Websites, brand identities, digital systems. Work that
-            actually moves the needle.
+            My name is Owen. I've spent the last few years building digital products for businesses
+            — restaurants, pharmacies, real estate companies, personal brands. Websites, systems,
+            identities, tools.
             <br />
             <br />
-            I run two teams. PuissantDev handles custom builds — the technical,
-            systems-driven work. 1Ephraim handles the full digital presence —
-            content, design, video, and web, all under one roof. And right now
-            we're building Involey, our own SaaS product.
+            Along the way I started building my own things too. Involey is a SaaS product I'm
+            currently developing — a business visibility and clarity tool for small businesses.
+            Building something of your own teaches you things no client project ever could.
             <br />
             <br />
-            We're not new to this. We've just been more focused on doing the
-            work than talking about it.
+            I understand both sides. The technical depth needed to ship something properly. And the
+            business thinking needed to make sure it's worth shipping in the first place.
             <br />
             <br />
-            That changes now.
+            I'm not the loudest developer in the room. But I'm usually the one who understands what
+            the room actually needs.
           </Body>
 
           <EntityCards>
-            <EntityCard
-              href="https://puissantdev.tech"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <EntityName>PuissantDev</EntityName>
-              <EntityLink>Custom builds →</EntityLink>
-            </EntityCard>
-            <EntityCard
-              href="https://1ephraim.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <EntityName>1Ephraim</EntityName>
-              <EntityLink>Digital presence →</EntityLink>
-            </EntityCard>
             <EntityCard
               href="https://involey.puissantdev.tech"
               target="_blank"
               rel="noopener noreferrer"
             >
               <EntityName>Involey</EntityName>
-              <EntityLink>SaaS product →</EntityLink>
+              <EntityLink>My SaaS →</EntityLink>
+            </EntityCard>
+            <EntityCard
+              href="#proof"
+              onClick={(e) => { e.preventDefault(); scrollTo('proof'); }}
+            >
+              <EntityName>Past work</EntityName>
+              <EntityLink>See projects →</EntityLink>
             </EntityCard>
           </EntityCards>
         </Left>

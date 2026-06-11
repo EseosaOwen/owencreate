@@ -85,28 +85,26 @@ const BgWord = styled.div`
 export default function Problem() {
   return (
     <Section>
-      <BgWord>invisible</BgWord>
+      <BgWord>execute</BgWord>
       <Inner>
         <Content>
-          <Eyebrow>The problem</Eyebrow>
+          <Eyebrow>The difference</Eyebrow>
           <Headline>
-            The problem isn't your business.<br />
-            It's your <em>presence.</em>
+            Most developers build what they're told.<br />
+            <em>I build what's needed.</em>
           </Headline>
           <Body>
             <BodyP>
-              You're good at what you do. Your customers know it. But the person who's never heard of
-              you — the one scrolling Instagram right now, or Googling what you sell — they don't see
-              that. They see a website that doesn't load properly. A logo that doesn't look
-              trustworthy. A social media page that hasn't posted in three months. Or worse — nothing
-              at all.
+              There's a gap between the developer who executes and the strategist who thinks. Most
+              people sit on one side or the other. I live in the middle.
             </BodyP>
             <BodyP>
-              And so they move on. Not because you lost. Because you were never visible in the first
-              place.
+              I can read a brief, understand the business goal behind it, architect the solution, and
+              ship it. Without needing three meetings to explain why it matters.
             </BodyP>
             <BodyP strong>
-              That's not a you problem. That's a foundation problem. And foundations can be fixed.
+              That's not common. And it's exactly what early-stage products and serious businesses
+              need.
             </BodyP>
           </Body>
         </Content>

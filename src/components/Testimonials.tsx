@@ -162,7 +162,7 @@ const testimonials = [
     location: "Remote",
     business: "Event Planning",
     highlight:
-      "Owen and the team has been an incredible asset to my business. The website and branding they developed not only elevated my event planning agency but also helped me reach a broader audience and drive more engagement. I'm truly grateful for their outstanding service. Thank you!",
+      "Owen and his team was an incredible asset to my business. The website and branding they developed not only elevated my event planning agency but also helped me reach a broader audience and drive more engagement. I'm truly grateful for their outstanding service. Thank you!",
   },
   {
     avatar: "CN",
@@ -170,7 +170,7 @@ const testimonials = [
     location: "Nigeria",
     business: "Construction and Engineering",
     highlight:
-      "PuissantDev did an excellent job bringing our vision to life. They created a modern, professional website that clearly showcases our engineering services and project portfolio. The team was responsive, easy to work with, and delivered exactly what we needed.",
+      "Owen did an excellent job bringing our vision to life. He created a modern, professional website that clearly showcases our engineering services and project portfolio. He was responsive, easy to work with, and delivered exactly what we needed.",
   },
 ];
 
@@ -180,7 +180,7 @@ export default function Testimonials() {
       <Inner>
         <Header>
           <Eyebrow>Testimonials</Eyebrow>
-          <Headline>Don't take our word for it.</Headline>
+          <Headline>Don't take my word for it.</Headline>
           <Sub>Real businesses. Real results. Real people on camera.</Sub>
         </Header>
 
@@ -188,7 +188,7 @@ export default function Testimonials() {
           <PlaceholderCard>
             <PlusIcon>+</PlusIcon>
             <PlaceholderText>
-              New testimonials added every Friday as the series delivers.
+              I let the work speak first. References available on request.
             </PlaceholderText>
           </PlaceholderCard>
 
@@ -225,8 +225,8 @@ export default function Testimonials() {
         </Grid>
 
         <ClosingLine>
-          Every business we work with gets this level of attention. Yours will
-          too.
+          I bring the same level of thinking to every project — whether it's a
+          one-day fix or a six-month build.
         </ClosingLine>
       </Inner>
     </Section>

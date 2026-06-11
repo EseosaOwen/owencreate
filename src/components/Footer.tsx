@@ -64,20 +64,20 @@ export default function Footer() {
       <Inner>
         <Logo>owen.</Logo>
         <Links>
-          <Link
+          {/* <Link
             href="https://puissantdev.tech"
             target="_blank"
             rel="noopener noreferrer"
           >
             PuissantDev
-          </Link>
-          <Link
+          </Link> */}
+          {/* <Link
             href="https://1ephraim.com"
             target="_blank"
             rel="noopener noreferrer"
           >
             1Ephraim
-          </Link>
+          </Link> */}
           <Link
             href="https://involey.puissantdev.tech"
             target="_blank"

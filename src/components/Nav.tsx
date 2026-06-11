@@ -57,6 +57,32 @@ const NavLink = styled.a`
   }
 `;
 
+const NavActions = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;
+
+const CVLink = styled.a`
+  font-family: ${fonts.body};
+  font-size: 13px;
+  color: ${tokens.textPrimary};
+  border: 0.5px solid ${tokens.textPrimary};
+  border-radius: 100px;
+  padding: 9px 20px;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+
+  &:hover {
+    opacity: 0.6;
+  }
+
+  @media (max-width: 600px) {
+    display: none;
+  }
+`;
+
 const CTAButton = styled.button`
   font-family: ${fonts.body};
   font-size: 13px;
@@ -84,11 +110,14 @@ export default function Nav() {
       <NavInner>
         <Logo onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>owen.</Logo>
         <NavLinks>
+          <NavLink onClick={() => scrollTo('projects')}>projects</NavLink>
           <NavLink onClick={() => scrollTo('proof')}>work</NavLink>
-          <NavLink onClick={() => scrollTo('series')}>series</NavLink>
-          <NavLink onClick={() => scrollTo('offer')}>offers</NavLink>
+          <NavLink onClick={() => scrollTo('contact')}>contact</NavLink>
         </NavLinks>
-        <CTAButton onClick={() => scrollTo('contact')}>Let's work together</CTAButton>
+        <NavActions>
+          <CVLink href="/Owen_CV.pdf" target="_blank" rel="noopener noreferrer">Download CV</CVLink>
+          <CTAButton onClick={() => scrollTo('contact')}>Work with me</CTAButton>
+        </NavActions>
       </NavInner>
     </NavBar>
   );

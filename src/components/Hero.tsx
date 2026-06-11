@@ -1,5 +1,5 @@
-import styled from '@emotion/styled';
-import { tokens, fonts } from '../tokens';
+import styled from "@emotion/styled";
+import { tokens, fonts } from "../tokens";
 
 const Section = styled.section`
   background: ${tokens.base};
@@ -17,6 +17,15 @@ const Inner = styled.div`
   max-width: 640px;
   width: 100%;
   text-align: center;
+`;
+
+const EyebrowImage = styled.img`
+  object-fit: cover;
+  object-position: top;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 1rem;
 `;
 
 const Badge = styled.div`
@@ -96,13 +105,16 @@ const PrimaryBtn = styled.button`
 const SecondaryBtn = styled.button`
   font-family: ${fonts.body};
   font-size: 14px;
-  color: rgba(13, 13, 13, 0.5);
+  font-weight: 400;
+  color: ${tokens.textPrimary};
   background: none;
-  padding: 14px 4px;
+  border: 0.5px solid ${tokens.textPrimary};
+  border-radius: 100px;
+  padding: 14px 28px;
   transition: opacity 0.15s ease;
 
   &:hover {
-    opacity: 0.8;
+    opacity: 0.6;
   }
 `;
 
@@ -138,7 +150,7 @@ const MetricLabel = styled.div`
 
 export default function Hero() {
   const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -146,42 +158,44 @@ export default function Hero() {
       <Inner>
         <Badge>
           <BadgeDot />
-          <BadgeText>AVAILABLE FOR NEW PROJECTS</BadgeText>
+          <BadgeText>AVAILABLE FOR NEW OPPORTUNITIES</BadgeText>
         </Badge>
 
+        <EyebrowImage src="/images/me-hero.PNG" />
+
         <Headline>
-          Most businesses are<br />
-          <em>invisible</em> online.<br />
-          Not yours.
+          I build things that work.
+          <br />
+          And I understand <em>why</em> they need to.
         </Headline>
 
         <Sub>
-          I've watched too many good businesses go unnoticed — not because they weren't good enough,
-          but because nobody ever built them the right foundation online. I've been in rooms where the
-          product was great but the presence was invisible. I know what that feels like. And I know
-          how to fix it.
-          <br /><br />
-          I'm Owen. I build websites, brand identities, and digital systems for businesses that are
-          done being overlooked.
+          I'm Owen — a developer and builder with a strategic mind. I don't just
+          write code. I think about the problem behind the product, the user
+          behind the interface, and the business behind the build.
         </Sub>
 
         <CTARow>
-          <PrimaryBtn onClick={() => scrollTo('contact')}>Let's work together →</PrimaryBtn>
-          <SecondaryBtn onClick={() => scrollTo('testimonials')}>See what others say ↓</SecondaryBtn>
+          <PrimaryBtn onClick={() => scrollTo("proof")}>
+            See my work →
+          </PrimaryBtn>
+          <SecondaryBtn onClick={() => scrollTo("contact")}>
+            Work with me →
+          </SecondaryBtn>
         </CTARow>
 
         <MetricsRow>
           <Metric>
-            <MetricNumber>50+</MetricNumber>
-            <MetricLabel>builds delivered</MetricLabel>
+            <MetricNumber>30+</MetricNumber>
+            <MetricLabel>projects shipped</MetricLabel>
           </Metric>
           <Metric>
-            <MetricNumber>10</MetricNumber>
-            <MetricLabel>industries served</MetricLabel>
+            <MetricNumber>10+</MetricNumber>
+            <MetricLabel>industries built for</MetricLabel>
           </Metric>
           <Metric>
-            <MetricNumber>3</MetricNumber>
-            <MetricLabel>products running</MetricLabel>
+            <MetricNumber>2</MetricNumber>
+            <MetricLabel>SaaS in production</MetricLabel>
           </Metric>
         </MetricsRow>
       </Inner>

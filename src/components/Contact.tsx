@@ -129,6 +129,24 @@ const Reassurance = styled.p`
   text-align: center;
 `;
 
+const CVDownload = styled.p`
+  font-family: ${fonts.body};
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.35);
+  margin-top: 14px;
+  text-align: center;
+`;
+
+const CVDownloadLink = styled.a`
+  color: ${tokens.purple};
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+
+  &:hover {
+    opacity: 0.7;
+  }
+`;
+
 const DirectRow = styled.div`
   margin-top: 28px;
   display: flex;
@@ -205,8 +223,8 @@ export default function Contact() {
           <em>something?</em>
         </Headline>
         <Sub>
-          No long proposals. No complicated processes. Just a message, a
-          conversation, and then we get to work. We respond within 24 hours.
+          Whether you're hiring, building something and need a developer who gets the bigger
+          picture, or just want to connect — send a message. I respond within 24 hours.
         </Sub>
 
         <Form onSubmit={handleSubmit}>
@@ -236,16 +254,14 @@ export default function Contact() {
             <option value="" disabled>
               What are you interested in?
             </option>
-            <option value="one-time">
-              A one-time build (website, brand, or Reel)
+            <option value="hire">I want to hire you full-time</option>
+            <option value="contract">
+              I need a developer for a project or contract
             </option>
-            <option value="retainer">
-              The 1Ephraim retainer ($1,200/month)
+            <option value="collaborate">
+              I want to collaborate or build something together
             </option>
-            <option value="custom">A custom project (PuissantDev)</option>
-            <option value="unsure">
-              I'm not sure yet — I just want to talk
-            </option>
+            <option value="connect">I just want to connect</option>
           </Select>
           <Input
             name="socials"
@@ -264,8 +280,15 @@ export default function Contact() {
         </Form>
 
         <Reassurance>
-          No spam. No pitch decks. Just a real conversation about your business.
+          No recruiters pitching roles I didn't ask for. Just real conversations about real work.
         </Reassurance>
+
+        <CVDownload>
+          Prefer a CV?{' '}
+          <CVDownloadLink href="/Owen_CV.pdf" target="_blank" rel="noopener noreferrer">
+            Download it here →
+          </CVDownloadLink>
+        </CVDownload>
 
         <DirectRow>
           <DirectLabel>Prefer to reach out directly?</DirectLabel>
