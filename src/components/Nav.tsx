@@ -115,7 +115,7 @@ export default function Nav() {
           <NavLink onClick={() => scrollTo('contact')}>contact</NavLink>
         </NavLinks>
         <NavActions>
-          <CVLink href="/Owen_CV.pdf" target="_blank" rel="noopener noreferrer">Download CV</CVLink>
+          <CVLink href="/Owen_Fullstack_Dev_CV.pdf" target="_blank" rel="noopener noreferrer">Download CV</CVLink>
           <CTAButton onClick={() => scrollTo('contact')}>Work with me</CTAButton>
         </NavActions>
       </NavInner>

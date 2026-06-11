@@ -365,8 +365,8 @@ const projects: Project[] = [
   },
   {
     team: "",
-    title: "Restaurant digital system",
-    desc: "Built a custom digital infrastructure for a restaurant — ordering system, customer retention tools, tailored specifically to the hospitality niche.",
+    title: "Customer retention system",
+    desc: "Built a restaurant customer retention system that helps businesses convert one-time visitors into repeat customers through structured digital engagement, campaign-based QR acquisition, and loyalty tracking. The system enables restaurants to collect customer data, run targeted re-engagement campaigns, and measure what drives repeat visits and revenue growth. Currently in use by over 5 restaurants",
     image: "Chester Fries Restaurant.png",
     stack: [
       "React",
@@ -400,7 +400,7 @@ const projects: Project[] = [
     type: "Web",
     desc: "Professional web presence built to convert for a construction and engineering company.",
     stack: ["React", "CSS-in-JS"],
-    url: "https://centerfieldengineering.com"
+    url: "https://centerfieldengineering.com",
   },
   {
     team: "PuissantDev",

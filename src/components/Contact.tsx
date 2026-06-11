@@ -285,7 +285,7 @@ export default function Contact() {
 
         <CVDownload>
           Prefer a CV?{' '}
-          <CVDownloadLink href="/Owen_CV.pdf" target="_blank" rel="noopener noreferrer">
+          <CVDownloadLink href="/Owen_Fullstack_Dev_CV.pdf" target="_blank" rel="noopener noreferrer">
             Download it here →
           </CVDownloadLink>
         </CVDownload>
