@@ -126,6 +126,7 @@ const CardImageIcon = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: -1;
 `;
 
 const GalleryBadge = styled.div`
@@ -349,7 +350,7 @@ const projects: Project[] = [
     title: "Involey",
     type: "SaaS",
     desc: "I identified a gap in how small businesses track visibility and clarity. And I've built the tool to fix it.",
-    image: "PuwiHealth Iphone mockup.jpg",
+    image: "New Involey Mockup.jpg",
     stack: [
       "React",
       "TypeScript",
