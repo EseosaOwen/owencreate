@@ -1,17 +1,9 @@
-import { useRef, useEffect, useCallback } from "react";
-import styled from "@emotion/styled";
-import GLightbox from "glightbox";
-import "glightbox/dist/css/glightbox.min.css";
-import { tokens, fonts } from "../tokens";
-
-const Section = styled.section`
-  background: ${tokens.base};
-  padding: 96px 32px;
-
-  @media (max-width: 768px) {
-    padding: 72px 20px;
-  }
-`;
+import { useRef, useEffect, useCallback } from 'react';
+import styled from '@emotion/styled';
+import GLightbox from 'glightbox';
+import 'glightbox/dist/css/glightbox.min.css';
+import { tokens, fonts } from '../tokens';
+import { SectionLight, Eyebrow, SectionHeadline, LightPill, PurpleTextLink } from '../styles/shared';
 
 const Inner = styled.div`
   max-width: 860px;
@@ -20,30 +12,6 @@ const Inner = styled.div`
 
 const Header = styled.div`
   margin-bottom: 56px;
-`;
-
-const Eyebrow = styled.div`
-  font-family: ${fonts.body};
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: ${tokens.purple};
-  margin-bottom: 16px;
-`;
-
-const Headline = styled.h2`
-  font-family: ${fonts.display};
-  font-size: clamp(28px, 4vw, 40px);
-  font-weight: 400;
-  color: ${tokens.textPrimary};
-  letter-spacing: -0.02em;
-  line-height: 1.2;
-
-  em {
-    font-style: italic;
-    color: ${tokens.purple};
-  }
 `;
 
 const ProjectList = styled.div`
@@ -126,29 +94,6 @@ const StackLabel = styled.span`
   margin-right: 4px;
 `;
 
-const StackPill = styled.span`
-  font-family: ${fonts.body};
-  font-size: 11px;
-  color: ${tokens.textPrimary};
-  background: ${tokens.purpleTint};
-  border-radius: 100px;
-  padding: 3px 10px;
-`;
-
-const CardLink = styled.a`
-  font-family: ${fonts.body};
-  font-size: 13px;
-  font-weight: 500;
-  color: ${tokens.purple};
-  cursor: pointer;
-  transition: opacity 0.15s ease;
-  text-decoration: none;
-
-  &:hover {
-    opacity: 0.7;
-  }
-`;
-
 type Project = {
   team: string;
   name: string;
@@ -161,57 +106,55 @@ type Project = {
 
 const projects: Project[] = [
   {
-    team: "Personal project",
-    name: "Involey",
-    type: "SaaS — In development",
+    team: 'Personal project',
+    name: 'Involey',
+    type: 'SaaS — In development',
     problem:
       "I identified a gap in how small businesses track visibility and clarity. I'm building the tool to fix it. Currently in active development.",
-    stack: ["React", "TypeScript", "Node.js", "MongoDB", "Express"],
-    url: "https://involey.puissantdev.tech",
+    stack: ['React', 'TypeScript', 'Node.js', 'MongoDB', 'Express'],
+    url: 'https://involey.puissantdev.tech',
   },
   {
-    team: "PuissantDev",
-    name: "Pharmacy e-commerce store",
-    type: "E-commerce",
+    team: 'PuissantDev',
+    name: 'Pharmacy e-commerce store',
+    type: 'E-commerce',
     problem:
-      "Built a full e-commerce system for a pharmacy from the ground up — product catalogue, checkout flow, order management, payment integration.",
-    stack: ["React", "Node.js", "MongoDB", "Payment systems"],
-    url: "https://khapsulepharmacy.org",
-    image: "Khapsule Pharmacy Mockup.jpg",
+      'Built a full e-commerce system for a pharmacy from the ground up — product catalogue, checkout flow, order management, payment integration.',
+    stack: ['React', 'Node.js', 'MongoDB', 'Payment systems'],
+    url: 'https://khapsulepharmacy.org',
+    image: 'Khapsule Pharmacy Mockup.jpg',
   },
   {
-    team: "PuissantDev",
-    name: "Restaurant digital system",
-    type: "Custom digital system",
+    team: 'PuissantDev',
+    name: 'Restaurant digital system',
+    type: 'Custom digital system',
     problem:
-      "Built a custom digital infrastructure for a restaurant — ordering system, customer retention tools, tailored specifically to the hospitality niche.",
-    stack: ["React", "Node.js", "MongoDB"],
-    image: "Chester Fries Restaurant.png",
+      'Built a custom digital infrastructure for a restaurant — ordering system, customer retention tools, tailored specifically to the hospitality niche.',
+    stack: ['React', 'Node.js', 'MongoDB'],
+    image: 'Chester Fries Restaurant.png',
   },
   {
-    team: "PuissantDev",
-    name: "Real estate business website",
-    type: "Web",
-    problem:
-      "Professional web presence built to convert for a property company.",
-    stack: ["React", "CSS"],
+    team: 'PuissantDev',
+    name: 'Real estate business website',
+    type: 'Web',
+    problem: 'Professional web presence built to convert for a property company.',
+    stack: ['React', 'CSS'],
   },
   {
-    team: "PuissantDev",
-    name: "Naturopathy center website",
-    type: "Web",
-    problem:
-      "Built to communicate trust and expertise to a health-conscious audience.",
-    stack: ["React", "CSS"],
+    team: 'PuissantDev',
+    name: 'Naturopathy center website',
+    type: 'Web',
+    problem: 'Built to communicate trust and expertise to a health-conscious audience.',
+    stack: ['React', 'CSS'],
   },
   {
-    team: "1Ephraim",
-    name: "SaaS landing page",
-    type: "Landing page",
-    problem: "High-converting landing page for an early-stage SaaS product.",
-    stack: ["React", "TypeScript", "Tailwind"],
-    url: "https://pigby.io",
-    image: "pigby.jpg",
+    team: '1Ephraim',
+    name: 'SaaS landing page',
+    type: 'Landing page',
+    problem: 'High-converting landing page for an early-stage SaaS product.',
+    stack: ['React', 'TypeScript', 'Tailwind'],
+    url: 'https://pigby.io',
+    image: 'pigby.jpg',
   },
 ];
 
@@ -227,25 +170,23 @@ export default function Offer() {
   const openImage = useCallback((imagePath: string) => {
     lbRef.current?.destroy();
     lbRef.current = GLightbox({
-      elements: [
-        { href: `/images/work/${imagePath}`, type: "image" },
-      ] as unknown as [],
+      elements: [{ href: `/images/work/${imagePath}`, type: 'image' }] as unknown as [],
       touchNavigation: true,
       closeButton: true,
-      openEffect: "fade",
-      closeEffect: "fade",
+      openEffect: 'fade',
+      closeEffect: 'fade',
     });
     lbRef.current.open();
   }, []);
 
   return (
-    <Section id="projects">
+    <SectionLight id="projects">
       <Inner>
         <Header>
           <Eyebrow>Things I've built</Eyebrow>
-          <Headline>
+          <SectionHeadline>
             The work, in <em>detail.</em>
-          </Headline>
+          </SectionHeadline>
         </Header>
 
         <ProjectList>
@@ -255,7 +196,7 @@ export default function Offer() {
             const handleLinkClick = (e: React.MouseEvent) => {
               e.preventDefault();
               if (p.url) {
-                window.open(p.url, "_blank");
+                window.open(p.url, '_blank');
               } else if (p.image) {
                 openImage(p.image);
               }
@@ -272,19 +213,19 @@ export default function Offer() {
                 <StackRow>
                   <StackLabel>Stack</StackLabel>
                   {p.stack.map((s) => (
-                    <StackPill key={s}>{s}</StackPill>
+                    <LightPill key={s}>{s}</LightPill>
                   ))}
                 </StackRow>
                 {hasLink && (
-                  <CardLink href={p.url ?? "#"} onClick={handleLinkClick}>
+                  <PurpleTextLink href={p.url ?? '#'} onClick={handleLinkClick}>
                     View project →
-                  </CardLink>
+                  </PurpleTextLink>
                 )}
               </Card>
             );
           })}
         </ProjectList>
       </Inner>
-    </Section>
+    </SectionLight>
   );
 }
