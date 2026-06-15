@@ -60,7 +60,7 @@ export default function Hero() {
             <MetricLabel>industries built for</MetricLabel>
           </Metric>
           <Metric>
-            <MetricNumber>2</MetricNumber>
+            <MetricNumber>3</MetricNumber>
             <MetricLabel>SaaS in production</MetricLabel>
           </Metric>
         </MetricsRow>

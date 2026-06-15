@@ -1,8 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "PowerShell(New-Item -ItemType Directory -Force \"c:\\\\Users\\\\omobi\\\\Documents\\\\PuissantDev\\\\owencreate\\\\src\\\\styles\")",
-      "PowerShell(New-Item -ItemType Directory -Force \"c:\\\\Users\\\\omobi\\\\Documents\\\\PuissantDev\\\\owencreate\\\\src\\\\components\")"
-    ]
-  }
-}
