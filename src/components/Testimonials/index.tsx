@@ -26,8 +26,8 @@ export default function Testimonials() {
       <Container>
         <Header>
           <Eyebrow>Testimonials</Eyebrow>
-          <Headline>Don't take our word for it.</Headline>
-          <Sub>Real businesses. Real results. Real people on camera.</Sub>
+          <Headline>Don't take my word for it.</Headline>
+          <Sub>Real businesses. Real results.</Sub>
         </Header>
 
         <Grid>
